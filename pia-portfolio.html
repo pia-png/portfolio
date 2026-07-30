@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#8C5CF2">
-<title>~*~ pia's corner of the web ~*~</title>
+<title>pia's portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
@@ -84,17 +84,6 @@
   nav.menu a:hover{transform:translate(-1px,-1px); box-shadow:3px 3px 0 var(--ink);}
   nav.menu a.active{background:var(--hot); color:#fff;}
 
-  .marquee{
-    background:var(--ink); color:var(--butter); overflow:hidden; white-space:nowrap;
-    border-bottom:3px solid var(--ink);
-  }
-  .marquee p{
-    display:inline-block; padding-left:100%; margin:6px 0;
-    font-family:'VT323', monospace; font-size:1.2rem; letter-spacing:0.04em;
-    animation: scrollmq 22s linear infinite;
-  }
-  @keyframes scrollmq{ from{transform:translateX(0);} to{transform:translateX(-100%);} }
-
   /* ---------- generic window ---------- */
   .window{
     background:#fff; border:3px solid var(--ink); border-radius:6px;
@@ -132,7 +121,10 @@
   .cam-frame{
     aspect-ratio:1/1; margin:14px; border:3px dashed var(--ink); border-radius:6px;
     background:repeating-linear-gradient(135deg, var(--lav) 0 16px, var(--pink) 16px 32px, var(--mint) 32px 48px);
-    display:flex; align-items:center; justify-content:center; text-align:center; padding:14px;
+    display:flex; align-items:center; justify-content:center; text-align:center; padding:0px;
+  }
+  .cam-frame img{      
+  width:100%; height:100%; object-fit:cover; border-radius:3px; display:block;
   }
   .cam-frame span{font-family:'VT323'; font-size:1.15rem; background:rgba(255,255,255,0.75); padding:6px 10px; border-radius:8px;}
   .cam-led{display:flex; align-items:center; gap:6px; padding:0 14px 14px; font-family:'VT323'; font-size:1rem;}
@@ -146,7 +138,7 @@
   }
   .lcd-label{font-family:'VT323'; font-size:1rem; margin-top:8px; color:var(--ink);}
 
-  .badges-88{display:flex; flex-wrap:wrap; gap:10px; margin-top:6px;}
+  .badges-88{display:flex; flex-wrap:wrap; gap:10px; margin-top:6px; justify-content:center;}
   .b88{
     width:88px; height:31px; border:2px solid var(--ink); border-radius:4px;
     display:flex; align-items:center; justify-content:center; text-align:center;
@@ -196,13 +188,19 @@
   .proj-grid .window:nth-child(odd){transform:rotate(-1deg);}
   .proj-grid .window:nth-child(even){transform:rotate(1.2deg);}
   .proj-grid .window .titlebar{background:linear-gradient(90deg, var(--hot), var(--purple));}
-  .proj-thumb{
-    aspect-ratio:16/10; display:flex; align-items:center; justify-content:center; position:relative;
-    margin:14px 14px 0; border:2px dashed var(--ink); border-radius:4px; font-size:2rem;
-    background:repeating-linear-gradient(45deg, var(--sky) 0 12px, var(--lav) 12px 24px);
-  }
-  .proj-thumb::before{content:"▶";}
-  .proj-body{padding:14px;}
+.proj-thumb{
+  aspect-ratio:16/10; position:relative; overflow:hidden;
+  margin:14px 14px 0; border:2px dashed var(--ink); border-radius:4px;
+  background:repeating-linear-gradient(45deg, var(--sky) 0 12px, var(--lav) 12px 24px);
+}
+.proj-thumb img{
+  width:100%; height:100%; object-fit:cover; display:block;
+}
+.proj-thumb::after{
+  content:"▶"; position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  font-size:1.8rem; color:#fff; background:rgba(58,42,77,0.25); opacity:0; transition:opacity .15s;
+}
+.proj-thumb:hover::after{opacity:1;}  .proj-body{padding:14px;}
   .proj-body h3{font-family:'VT323'; font-size:1.35rem; margin:0 0 6px;}
   .proj-body p{font-size:0.9rem; font-weight:400; margin:0 0 10px;}
   .proj-tags{display:flex; gap:6px; flex-wrap:wrap; margin-bottom:10px;}
@@ -211,6 +209,26 @@
     display:inline-block; text-decoration:none; font-family:'Press Start 2P'; font-size:0.55rem;
     background:var(--ink); color:#fff; padding:9px 12px; border-radius:6px; border:2px solid var(--ink);
   }
+
+  .snap-grid{
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:22px;
+  }
+  .snap{
+    background:#fff; padding:10px 10px 34px; border-radius:6px;
+    border:3px solid var(--ink); box-shadow:5px 5px 0 var(--ink);
+    position:relative; transition:transform .15s ease;
+  }
+  .snap:nth-child(odd){transform:rotate(-2deg);}
+  .snap:nth-child(even){transform:rotate(2deg);}
+  .snap:hover{transform:rotate(0deg) scale(1.03);}
+  .snap img{
+    width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:3px; display:block;
+  }
+  .snap .cap{
+    position:absolute; bottom:8px; left:0; right:0; text-align:center; margin:0;
+    font-family:'VT323'; font-size:1.05rem; color:var(--ink);
+  }
+  @media (max-width:820px){ .snap{transform:none !important;} }
 
   /* ---------- CONTACT / guestbook ---------- */
   .guestbook{transform:rotate(-0.6deg); max-width:640px; margin:0 auto;}
@@ -278,24 +296,20 @@
 
 <div class="chrome">
   <div class="dots"><span></span><span></span><span></span></div>
-  <div class="urlbar lcd">piasworld.net</div>
+  <div class="urlbar lcd">piasportfolio.org</div>
   <div class="go">GO</div>
 </div>
 
 <div class="toolbar">
   <div class="toolbar-inner">
-    <div class="site-name">PIA<span>*</span>WORLD</div>
+    <div class="site-name">PIA<span>*</span>ODHRANI</div>
     <nav class="menu" id="mainNav">
-      <a href="#about" class="active">📁 About Me</a>
-      <a href="#resume">📄 Resume</a>
-      <a href="#projects">🎬 Projects</a>
-      <a href="#contact">💌 Contact</a>
+      <a href="#about" class="active">About Me</a>
+      <a href="#resume">Resume</a>
+      <a href="#projects">Projects</a>
+      <a href="#snaps">Snaps</a>
     </nav>
   </div>
-</div>
-
-<div class="marquee">
-  <p>✦ WELCOME TO PIA'S CORNER OF THE WEB ✦ FILMMAKER · ROBOT BUILDER · STORYTELLER ✦ THANKS FOR STOPPING BY ✦ SIGN THE GUESTBOOK BELOW ✦ BEST VIEWED WITH AN OPEN MIND ✦</p>
 </div>
 
 <main class="wrap">
@@ -306,19 +320,19 @@
         <div class="titlebar"><span>about_me.txt</span><div class="dots"><i></i><i></i><i></i></div></div>
         <div class="body">
           <span class="hey">hey! <span class="blink">_</span></span>
-          <p>I'm <strong>Pia</strong> — a storyteller, filmmaker, and creator inspired by the intersection of art, technology, and community.</p>
-          <p>I'm a student creator working across film, engineering, and community projects. I enjoy building and documenting ideas that combine storytelling, design, and technology — from robotics and STEM initiatives to documentaries and hands-on creative work.</p>
+          <p>I'm <strong>Pia</strong>, a storyteller, filmmaker, and creator inspired by the intersection of art, technology, and community.</p>
+          <p>I'm a student creator working across film, engineering, and community projects. I enjoy building and documenting ideas that combine storytelling, design, and technology. From robotics and STEM initiatives to documentaries and hands-on creative work.</p>
           <p>I'm especially interested in projects that connect people, solve problems, and turn curiosity into something real.</p>
           <div class="badge-strip">
-            <span>🎥 film</span><span>🤖 robotics</span><span>🌱 community</span><span>✦ est. always curious</span>
+            <span>film</span><span>robotics</span><span>community</span><span>✦ est. always curious</span>
           </div>
         </div>
       </div>
 
       <div class="side-stack">
         <div class="window cam-win">
-          <div class="titlebar"><span>pia_cam.gif</span><div class="dots"><i></i><i></i><i></i></div></div>
-          <div class="cam-frame"><span>your photo here!<br>swap this box for an &lt;img&gt;</span></div>
+          <div class="titlebar"><span>pia_cam.jpeg</span><div class="dots"><i></i><i></i><i></i></div></div>
+          <div class="cam-frame"><img src="pia.png" alt="Photo of Pia"></div>          
           <div class="cam-led"><i></i> LIVE — probably mid-project</div>
         </div>
 
@@ -328,9 +342,9 @@
             <div class="lcd-box" id="hitCount">·······</div>
             <div class="lcd-label">you are visitor number ↑</div>
             <div class="badges-88">
-              <a class="b88 insta" href="https://instagram.com/" target="_blank" rel="noopener">follow on<br>Instagram</a>
-              <a class="b88 linkedin" href="https://linkedin.com/" target="_blank" rel="noopener">connect on<br>LinkedIn</a>
-              <a class="b88 yt" href="https://youtube.com/" target="_blank" rel="noopener">watch on<br>YouTube</a>
+              <a class="b88 insta" href="https://www.instagram.com/builtbypia/" target="_blank" rel="noopener">follow on<br>Instagram</a>
+              <a class="b88 linkedin" href="https://www.linkedin.com/in/pia-odhrani-1a05a23a3/" target="_blank" rel="noopener">connect on<br>LinkedIn</a>
+              <a class="b88 yt" href="https://www.youtube.com/@potato-on-film" target="_blank" rel="noopener">watch on<br>YouTube</a>
             </div>
           </div>
         </div>
@@ -339,15 +353,15 @@
   </section>
 
   <section id="resume">
-    <div class="section-head"><div class="win">📄 RESUME.doc</div></div>
+    <div class="section-head"><div class="win">RESUME.doc</div></div>
     <div class="cork-grid">
       <div class="window">
         <div class="titlebar"><span>experience</span><div class="dots"><i></i><i></i><i></i></div></div>
         <div class="body">
           <ul class="timeline">
-            <li><strong>Role / Organization</strong><span class="when">Month Year — Present</span><p>One or two lines on what you did and what it led to.</p></li>
-            <li><strong>Role / Organization</strong><span class="when">Month Year — Month Year</span><p>One or two lines on what you did and what it led to.</p></li>
-            <li><strong>Role / Organization</strong><span class="when">Month Year — Month Year</span><p>One or two lines on what you did and what it led to.</p></li>
+            <li><strong>Outreach Director & Chapter Lead / Ready to Grow</strong><span class="when">2025 — Present</span><p>I developed workshops aimed at strengthening cognitive and motor skills for children aged 1 to 6 and partnered with Orange County Rescue Mission (OCRM) and HIS OC to support families. As the chapter lead, I  successfully managed and distributed over 65 kits for children while leading a dedicated team of 20 to 25 members.</p></li>
+            <li><strong>Competitor & Mentor / VEX Robotics</strong><span class="when">2022 — Present</span><p>I have competed in VEX Robotics for seasons, including at the prestigious World Championships. Additionally, I mentored an elementary robotics team, where I supported their technical learning and built their confidence.</p></li>
+            <li><strong>Eveny Organizer / Girl Powered STEM Night & Sunbeam</strong><span class="when">2025 — Present</span><p>I planned and executed a community STEM event for over 100 students by directing promotions, coordinating 20 volunteers, and managing the budget. I'm currently working with Hack Club to organize Sunbeam, a global social coding event for girls.</p></li>
           </ul>
         </div>
       </div>
@@ -356,8 +370,24 @@
         <div class="titlebar"><span>education</span><div class="dots"><i></i><i></i><i></i></div></div>
         <div class="body">
           <ul class="timeline">
-            <li><strong>School / Program</strong><span class="when">Year — Year</span><p>Field of study, focus, or notable coursework.</p></li>
-            <li><strong>School / Program</strong><span class="when">Year — Year</span><p>Field of study, focus, or notable coursework.</p></li>
+            <li><strong>Canyon High School</strong><span class="when">2026 — 2029</span>
+              <p><b>Activities and societies: </b><br>
+                - Robotics <br>
+                - Science Olympiad <br>
+                - Reel Impact <br><br>
+                School year updates to come!
+              </p></li>
+            <li><strong>Orange County School of The Arts / Film & Television</strong><span class="when">2025 — 2026</span>
+            <p>
+            <b>Activities and societies: </b><br>
+            - California Scholarship Federation <br>
+            - OCSA Diversity Project <br>
+            - UNICEF <br>
+            - Digital Dreamscape <br>
+            - OCSA PAL (Social Action Leader) <br>
+            - Beyond Borders (Poet) <br><br>
+            <b>GPA:</b> 4.2 (weighted), 4.0 (unweighted) <br>
+            </p></li>
           </ul>
         </div>
       </div>
@@ -378,8 +408,8 @@
         <div class="body">
           <ul class="lang-list">
             <li>English <div class="lang-bar"><i style="width:100%;"></i></div></li>
-            <li>Language 2 <div class="lang-bar"><i style="width:75%;"></i></div></li>
-            <li>Language 3 <div class="lang-bar"><i style="width:45%;"></i></div></li>
+            <li>Hindi <div class="lang-bar"><i style="width:85%;"></i></div></li>
+            <li>Spanish <div class="lang-bar"><i style="width:45%;"></i></div></li>
           </ul>
         </div>
       </div>
@@ -387,80 +417,103 @@
   </section>
 
   <section id="projects">
-    <div class="section-head"><div class="win">🎬 PROJECTS</div></div>
+    <div class="section-head"><div class="win">PROJECTS</div></div>
     <div class="proj-grid">
       <div class="window">
-        <div class="titlebar"><span>film_01.mov</span><div class="dots"><i></i><i></i><i></i></div></div>
-        <div class="proj-thumb"></div>
+        <div class="titlebar"><span>commercial_01.mov</span><div class="dots"><i></i><i></i><i></i></div></div>
+        <div class="proj-thumb"><img src="matcha.png" alt="Still from Documentary Title"></div>
         <div class="proj-body">
-          <h3>Documentary Title</h3>
-          <p>A short line about the story, the people in it, and why you made it.</p>
-          <div class="proj-tags"><span>Documentary</span><span>Director</span></div>
-          <a class="proj-link" href="#" target="_blank" rel="noopener">▶ WATCH</a>
+          <h3>Ding Tea Commercial</h3>
+          <p>A commercial for Ding Tea Anaheim Hills' Banana Matcha.</p>
+          <div class="proj-tags"><span>Commercial</span><span>Producer/Director</span></div>
+          <a class="proj-link" href="https://www.instagram.com/reel/DbH9tC0uw5S/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener">▶ WATCH</a>
         </div>
       </div>
 
       <div class="window">
-        <div class="titlebar"><span>film_02.mov</span><div class="dots"><i></i><i></i><i></i></div></div>
-        <div class="proj-thumb"></div>
+        <div class="titlebar"><span>commercial_02.mov</span><div class="dots"><i></i><i></i><i></i></div></div>
+        <div class="proj-thumb"><img src="cup-noodles.png" alt="Still from Documentary Title"></div>
         <div class="proj-body">
-          <h3>Short Film Title</h3>
-          <p>A quick pitch of the premise, plus your role on set.</p>
-          <div class="proj-tags"><span>Short Film</span><span>Writer/Editor</span></div>
-          <a class="proj-link" href="#" target="_blank" rel="noopener">▶ WATCH</a>
+          <h3>Cup Noodles Commercial</h3>
+          <p>A commercial made for a project in Cinematography with Ariel Cho.</p>
+          <div class="proj-tags"><span>Commercial</span><span>Producer/Director</span></div>
+          <a class="proj-link" href="https://youtube.com/shorts/Uk5XbcTikVM?si=ahAHuQgpuinj7LD-" target="_blank" rel="noopener">▶ WATCH</a>
         </div>
       </div>
 
       <div class="window">
-        <div class="titlebar"><span>robotics.mov</span><div class="dots"><i></i><i></i><i></i></div></div>
-        <div class="proj-thumb"></div>
+        <div class="titlebar"><span>film.mov</span><div class="dots"><i></i><i></i><i></i></div></div>
+        <div class="proj-thumb"><img src="monarch.jpg"></div>
         <div class="proj-body">
-          <h3>Robotics / STEM Project</h3>
-          <p>What the build does, the team, and any results or awards.</p>
-          <div class="proj-tags"><span>Robotics</span><span>Team Project</span></div>
-          <a class="proj-link" href="#" target="_blank" rel="noopener">▶ WATCH</a>
+          <h3>A Letter to the Monarchs</h3>
+          <p>A short film about protecting our wildlife.</p>
+          <div class="proj-tags"><span>Short Film</span><span>Producer/Director</span></div>
+          <a class="proj-link" href="https://youtu.be/QifIXKtRD6U?si=8gpb_1tc9gj-gW1F" target="_blank" rel="noopener">▶ WATCH</a>
         </div>
       </div>
 
       <div class="window">
-        <div class="titlebar"><span>community.mov</span><div class="dots"><i></i><i></i><i></i></div></div>
-        <div class="proj-thumb"></div>
+        <div class="titlebar"><span>docu.mov</span><div class="dots"><i></i><i></i><i></i></div></div>
+        <div class="proj-thumb"><img src="stem.png"></div>
         <div class="proj-body">
-          <h3>Community Initiative</h3>
-          <p>Who it served, what you organized, and the impact it had.</p>
+          <h3>Girl Powered STEM Night</h3>
+          <p>A mini documentary on the process of planning Girl Powered STEM Night.</p>
           <div class="proj-tags"><span>Community</span><span>Organizer</span></div>
-          <a class="proj-link" href="#" target="_blank" rel="noopener">▶ WATCH</a>
+          <a class="proj-link" href="https://youtu.be/aVFxjAtqKGI?si=M_mimcikucxxC0xx" target="_blank" rel="noopener">▶ WATCH</a>
         </div>
       </div>
+
+      <div class="window">
+        <div class="titlebar"><span>artnight.png</span><div class="dots"><i></i><i></i><i></i></div></div>
+        <div class="proj-thumb"><img src="kits.png"></div>
+        <div class="proj-body">
+          <h3>HIS-OC Art Night</h3>
+          <p>I helped plan two Family Art Nights, item donations, and kit donations.</p>
+          <div class="proj-tags"><span>Community</span><span>Ready to Grow</span></div>
+          <a class="proj-link" href="https://www.instagram.com/p/DWDeYAsFexm/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener">SEE MORE</a>
+        </div>
+      </div>
+
+      <div class="window">
+        <div class="titlebar"><span>booth.html</span><div class="dots"><i></i><i></i><i></i></div></div>
+        <div class="proj-thumb"><img src="booth.png"></div>
+        <div class="proj-body">
+          <h3>Photo Booth</h3>
+          <p>I built a mini web photo booth with my own font.</p>
+          <div class="proj-tags"><span>Coding</span><span>Website</span></div>
+          <a class="proj-link" href="https://pia-png.github.io/willow-booth/" target="_blank" rel="noopener">TRY IT</a>
+        </div>
+      </div>
+
+      <div class="window">
+        <div class="titlebar"><span>app.dart</span><div class="dots"><i></i><i></i><i></i></div></div>
+        <div class="proj-thumb"><img src="code.png"></div>
+        <div class="proj-body">
+          <h3>Chemo Companion</h3>
+          <p>Currently building an app to help caretakers of cancer patients.</p>
+          <div class="proj-tags"><span>Coding</span><span>App</span></div>
+          <a class="proj-link" target="_blank" rel="noopener" style="background-color: #f1d169;">IN PROGRESS</a>
+        </div>
+      </div>
+  
     </div>
   </section>
 
-  <section id="contact">
-    <div class="section-head"><div class="win">💌 CONTACT</div></div>
-    <div class="window guestbook">
-      <div class="titlebar"><span>guestbook.exe</span><div class="dots"><i></i><i></i><i></i></div></div>
-      <div class="body">
-        <p class="lcd" style="font-size:1.3rem; color:var(--hot); margin-top:0;">sign my guestbook — let's make something together!</p>
-        <!--
-          This form sends real email via FormSubmit (formsubmit.co) — free, no signup needed.
-          1. Replace REPLACE_WITH_YOUR_EMAIL@example.com below with your real email address.
-          2. Publish the site and submit the form once yourself — FormSubmit will email you
-             a one-time confirmation link. Click it, and every submission after that lands
-             straight in your inbox.
-        -->
-        <form id="contactForm" action="https://formsubmit.co/REPLACE_WITH_YOUR_EMAIL@example.com" method="POST">
-          <input type="hidden" name="_subject" value="New message from piasworld.net!">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_captcha" value="true">
-          <div class="field"><label for="name">name</label><input id="name" name="name" type="text" required placeholder="your name"></div>
-          <div class="field"><label for="email">email</label><input id="email" name="email" type="email" required placeholder="you@email.com"></div>
-          <div class="field"><label for="message">message</label><textarea id="message" name="message" rows="4" required placeholder="what's on your mind?"></textarea></div>
-          <button class="send-btn" type="submit">SEND ✦</button>
-          <p class="form-msg" id="formMsg"></p>
-        </form>
-      </div>
-    </div>
-  </section>
+  <section id="snaps">
+  <div class="section-head"><div class="win">SNAPS</div></div>
+  <div class="snap-grid">
+    <div class="snap"><img src="1.png" alt="Describe this photo"><p class="cap">High Tide Film Festival</p></div>
+    <div class="snap"><img src="2.png" alt="Describe this photo"><p class="cap">Cup Noodles Commercial</p></div>
+    <div class="snap"><img src="3.png" alt="Describe this photo"><p class="cap">Volunteering at HIS-OC</p></div>
+    <div class="snap"><img src="4.png" alt="Describe this photo"><p class="cap">Ready to Grow meeting</p></div>
+    <div class="snap"><img src="5.png" alt="Describe this photo"><p class="cap">Badges at HIS-OC</p></div>
+    <div class="snap"><img src="6.JPG" alt="Describe this photo"><p class="cap">STEM Night</p></div>
+    <div class="snap"><img src="7.JPG" alt="Describe this photo"><p class="cap">Group photo with FTV</p></div>
+    <div class="snap"><img src="8.JPG" alt="Describe this photo"><p class="cap">Selling at OCSAFest</p></div>
+    <div class="snap"><img src="9.JPG" alt="Describe this photo"><p class="cap">Film set</p></div>
+    <div class="snap"><img src="10.JPG" alt="Describe this photo"><p class="cap">Higher Ground OC</p></div>
+  </div>
+</section>
 
 </main>
 
@@ -468,17 +521,17 @@
   <div class="wrap">
     <div class="under-construction">🚧 always under construction 🚧</div>
     <div class="webring">
-      <span class="b88" style="cursor:default;">best viewed<br>with curiosity</span>
-      <span class="b88" style="cursor:default;">100%<br>human-made</span>
       <span class="b88" style="cursor:default;">powered by<br>iced coffee</span>
       <span class="b88" style="cursor:default;">film kid<br>since forever</span>
+      <span class="b88" style="cursor:default;">i want<br>chipotle</span>
+
     </div>
     <div class="call-write">
-      <a href="tel:+10000000000">📞 +1 (000) 000-0000</a>
-      <a href="mailto:pia@example.com">✉️ pia@example.com</a>
-      <a href="https://instagram.com/" target="_blank" rel="noopener">✦ Instagram</a>
-      <a href="https://linkedin.com/" target="_blank" rel="noopener">✦ LinkedIn</a>
-      <a href="https://youtube.com/" target="_blank" rel="noopener">✦ YouTube</a>
+      <a href="tel:+10000000000">+1 (909) 530-9850</a>
+      <a href="mailto:pia@example.com">pia.odhranii@gmail.com</a>
+      <a href="https://www.instagram.com/builtbypia/" target="_blank" rel="noopener">✦ Instagram</a>
+      <a href="https://www.linkedin.com/in/pia-odhrani-1a05a23a3/" target="_blank" rel="noopener">✦ LinkedIn</a>
+      <a href="https://www.youtube.com/@potato-on-film" target="_blank" rel="noopener">✦ YouTube</a>
     </div>
     <p class="sign">made with ✦ by pia — thanks for stopping by <span class="blink">_</span></p>
   </div>
@@ -497,27 +550,9 @@
   }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
   sections.forEach(s => s && observer.observe(s));
 
-  // contact form — sends real email via FormSubmit once you've set your address in the
-  // form's action attribute above. Until then, this just reminds you to set it.
-  const form = document.getElementById('contactForm');
-  const msg = document.getElementById('formMsg');
-  form.addEventListener('submit', function(e){
-    if (form.action.includes('REPLACE_WITH_YOUR_EMAIL')) {
-      e.preventDefault();
-      msg.textContent = "almost! swap REPLACE_WITH_YOUR_EMAIL in the form's action with your real email ✏️";
-      return;
-    }
-    // real address is set — let the form submit normally to FormSubmit.
-    msg.textContent = "sending... ✦";
-  });
 
-  // real, shared visitor counter — no backend needed, uses a free public
-  // counting API (a community-run revival of the old countapi.xyz).
-  // IMPORTANT: change 'pia-portfolio-piasworld-2026' below to something unique
-  // to you, since keys are public and shared across everyone using this service —
-  // a generic key could get bumped by other people's sites too.
   (async function updateVisitorCounter(){
-    const KEY = 'pia-portfolio-piasworld-2026';
+    const KEY = 'pia-portfolio-piasworld-xk2929';
     const el = document.getElementById('hitCount');
     try {
       const res = await fetch('https://countapi.mileshilliard.com/api/v1/hit/' + KEY);
@@ -525,14 +560,11 @@
       const data = await res.json();
       el.textContent = String(data.value).padStart(7, '0');
     } catch (err) {
-      // offline, opened as a local file, or the service is unreachable —
-      // show a friendly placeholder instead of breaking the page.
       el.textContent = '???????';
       console.warn('Visitor counter unavailable:', err);
     }
   })();
 
-  // tiny cursor sparkle trail, skipped for reduced-motion users
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const glyphs = ['✦','✧','★','♡'];
     let last = 0;
